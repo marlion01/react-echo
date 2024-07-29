@@ -1,0 +1,19 @@
+services:
+  dev-postgres:
+    image: postgres:15.3
+    ports:
+      - 5434:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: udemy
+      POSTGRES_PASSWORD: udemy
+      POSTGRES_DB: udemy
+    restart: always
+    networks:
+      - lesson
+networks:
+  lesson:
+volumes:
+  postgres_data:
+
