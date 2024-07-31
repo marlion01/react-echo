@@ -23,6 +23,11 @@ func NewDB() *gorm.DB {
 	//fmt.Println(os.Getenv("POSTGRES_HOST"))
 	//fmt.Println(os.Getenv("POSTGRES_PORT"))
 	//fmt.Println(os.Getenv("POSTGRES_DB"))
+	shell := os.Getenv("POSTGRES_USER")
+	if shell == "" {
+		fmt.Println("POSTGRES_USER is empty")
+		return nil
+	}
 	url := fmt.Sprintf("postgres://%s:%s@%s:%s/%s", os.Getenv("POSTGRES_USER"),
 		os.Getenv("POSTGRES_PW"), os.Getenv("POSTGRES_HOST"),
 		os.Getenv("POSTGRES_PORT"), os.Getenv("POSTGRES_DB"))
